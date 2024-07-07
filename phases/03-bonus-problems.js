@@ -296,7 +296,7 @@ console.log(coinChange([10, 2], 12));
   and for each other coin, wee similarly check recursively whether the target gets to zero or less than zero
   all the while updating the minCoun for that sub problem and we do this until we pop stacks till we reach the
   main problem stack by which we have successfully calculated all subproblems for the first coin against the main
-  target. Then we do that for other coins against hte main target in a similar way all the while maintaining
+  target. Then we do that for other coins against the main target in a similar way all the while maintaining
   minCount. In this way we have checked for all combinations in makeBetterChange.
 5. In makeBetterChange, we used coins.slice(i), which made it faster but here if we do that it would give
 incorrect results with memoization in some cases but without memoization it gives accurate results. So in
@@ -309,9 +309,9 @@ as revisiting smaller denominations after larger ones. Since no memoization is u
 computed independently, which ensures correctness but is less efficient. For each coin selected in an iteration,
 through recursion, we get the best possible combination so for any coin selected we don't have to consider
 previously selected coins. For example with [10,7,1] and target 24, the best change is [10,7,7]. So once we
-get the perfect combination against 10, we move to 7 where difference is 17 and then if still is still present
-in the coins, we again against 10 and best combination comes out to be [7,10,7] which is still the same so that
-was wasted calculations.
+get the perfect combination against 10, we move to 7 where difference is 17 and then if 10 is still present
+in the coins, we again calculate against 10 and best combination comes out to be [7,10,7] which is still the
+same so those were redundant calculations.
   7.2. When you introduce memoization in coinChange(), When you introduce memoization, the key insight is that
 memoization relies on storing and reusing the results of previously computed subproblems. Without memoization,
 every recursive call is treated independently but with memoization, results of previous calcuations also matter,
